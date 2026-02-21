@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<article class="paper" itemscope itemtype="https://schema.org/BlogPosting">
+  <header class="paper-header">
+    <p class="eyebrow">Blog</p>
+    <h1 itemprop="headline">{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="lede">{{ page.subtitle }}</p>
+    {% endif %}
+
+    <div class="paper-meta">
+      <p>
+        <strong>Published:</strong> <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {% if page.reading_time %}
+          <span> · <strong>Reading time:</strong> {{ page.reading_time }} min</span>
+        {% endif %}
+      </p>
+    </div>
+  </header>
+
+  <div class="paper-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+</article>

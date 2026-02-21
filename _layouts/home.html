@@ -1,0 +1,69 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="hero-main">
+    <p class="eyebrow">Independent Writing</p>
+    <h1>{{ site.hero_title | default: site.title }}</h1>
+    <p class="lede">{{ site.hero_description | default: site.description }}</p>
+  </div>
+</section>
+
+<section class="post-listing" aria-label="Recent posts">
+  {% if site.posts.size > 0 %}
+    {% for post in site.posts %}
+      {% assign is_blog_entry = false %}
+      {% if post.layout == "blog" %}
+        {% assign is_blog_entry = true %}
+      {% endif %}
+      <article class="post-card">
+        <p class="post-meta-line">
+          {% if is_blog_entry %}
+            <span class="post-kind-badge post-kind-blog">Blog</span>
+          {% else %}
+            <span class="post-kind-badge post-kind-research">Research</span>
+          {% endif %}
+          <span>{{ post.date | date: "%B %-d, %Y" }}</span>
+          {% if post.reading_time %}
+            <span>· {{ post.reading_time }} min read</span>
+          {% endif %}
+        </p>
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        {% if is_blog_entry %}
+          <p class="post-abstract">{{ post.excerpt | strip_html | truncate: 220 }}</p>
+        {% elsif post.abstract %}
+          <p class="post-abstract">{{ post.abstract }}</p>
+        {% elsif post.excerpt %}
+          <p class="post-abstract">{{ post.excerpt | strip_html | truncate: 220 }}</p>
+        {% endif %}
+        {% if post.keywords and is_blog_entry == false %}
+          <ul class="keyword-row" aria-label="Keywords">
+            {% for keyword in post.keywords limit: 5 %}
+              <li>{{ keyword }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </article>
+    {% endfor %}
+  {% else %}
+    <article class="post-card empty-state">
+      <h2>No posts yet</h2>
+      <p>Start by creating a file in <code>_posts/</code> with one of these front matter styles:</p>
+      <pre><code>---
+layout: post
+title: "Your Research Post"
+authors: ["Your Name"]
+affiliations: ["Independent"]
+abstract: "2-3 sentence abstract."
+keywords: ["llm", "systems", "optimization"]
+reading_time: 8
+---</code></pre>
+      <pre><code>---
+layout: blog
+title: "Your Blog Post"
+subtitle: "Optional short subtitle"
+reading_time: 4
+---</code></pre>
+    </article>
+  {% endif %}
+</section>

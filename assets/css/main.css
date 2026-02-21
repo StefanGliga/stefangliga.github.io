@@ -1,0 +1,387 @@
+:root {
+  --ink: #12202a;
+  --ink-soft: #334a5a;
+  --bg: #f7f5ef;
+  --card: #fffdf8;
+  --line: #d6cfbf;
+  --accent: #8a4f1d;
+  --accent-soft: #d98943;
+  --shadow: 0 18px 42px rgba(18, 32, 42, 0.08);
+  --radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 5% 10%, rgba(138, 79, 29, 0.1), transparent 30%),
+    radial-gradient(circle at 85% 90%, rgba(67, 119, 89, 0.11), transparent 36%),
+    var(--bg);
+  font-family: "Spectral", Georgia, serif;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: min(1080px, 92vw);
+  margin: 0 auto;
+}
+
+.site-header {
+  padding: 1.8rem 0 1.4rem;
+  border-bottom: 1px solid rgba(18, 32, 42, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem 1rem;
+  align-items: center;
+}
+
+.site-title {
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.site-tagline {
+  margin: 0;
+  color: var(--ink-soft);
+  grid-column: 1 / -1;
+  font-size: 1rem;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.site-nav a {
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+}
+
+.content-wrapper {
+  flex: 1;
+  padding: 2.4rem 0 3.2rem;
+  animation: fade-up 420ms ease both;
+}
+
+.hero {
+  background: linear-gradient(145deg, rgba(255, 249, 235, 0.9), rgba(255, 255, 255, 0.65));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.3rem, 3vw, 2.2rem);
+  box-shadow: var(--shadow);
+  margin-bottom: 2.1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+}
+
+.hero h1,
+.paper h1,
+.post-card h2,
+.paper h2,
+.paper h3 {
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  line-height: 1.2;
+  margin: 0.55rem 0 0;
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 4.6vw, 3rem);
+  max-width: 32ch;
+}
+
+.lede {
+  margin-top: 0.8rem;
+  color: var(--ink-soft);
+  max-width: 110ch;
+}
+
+.post-listing {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.post-card {
+  background: var(--card);
+  border: 1px solid rgba(18, 32, 42, 0.12);
+  border-radius: 14px;
+  padding: 1.2rem 1.25rem;
+  box-shadow: var(--shadow);
+  animation: fade-up 520ms ease both;
+}
+
+.post-card h2 {
+  margin-top: 0.35rem;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
+
+.post-card h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-meta-line {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.post-abstract {
+  margin: 0.5rem 0 0;
+}
+
+.keyword-row {
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.keyword-row li {
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-size: 0.8rem;
+  border: 1px solid rgba(18, 32, 42, 0.2);
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  color: var(--ink-soft);
+}
+
+.paper {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.6vw, 2rem);
+}
+
+.paper-header {
+  border-bottom: 1px solid rgba(18, 32, 42, 0.15);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.paper h1 {
+  font-size: clamp(1.6rem, 3.7vw, 2.7rem);
+}
+
+.paper-meta {
+  margin-top: 0.8rem;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+.paper-meta p {
+  margin: 0.35rem 0;
+}
+
+.abstract {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--accent-soft);
+  background: rgba(138, 79, 29, 0.07);
+  border-radius: 6px;
+}
+
+.abstract h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.abstract p {
+  margin: 0.35rem 0 0;
+}
+
+.paper-content {
+  color: #1e2f3c;
+}
+
+.paper-content h2 {
+  margin-top: 1.65rem;
+  font-size: 1.4rem;
+}
+
+.paper-content h3 {
+  margin-top: 1.1rem;
+  font-size: 1.15rem;
+}
+
+.paper-content p,
+.paper-content ul,
+.paper-content ol,
+.paper-content blockquote {
+  max-width: 78ch;
+}
+
+.page-content .paper-content p,
+.page-content .paper-content ul,
+.page-content .paper-content ol,
+.page-content .paper-content blockquote {
+  max-width: none;
+}
+
+.paper-content blockquote {
+  margin-left: 0;
+  border-left: 3px solid var(--accent-soft);
+  padding-left: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.paper-content code {
+  font-family: "Space Grotesk", "Courier New", monospace;
+  font-size: 0.9em;
+  background: rgba(18, 32, 42, 0.08);
+  border-radius: 4px;
+  padding: 0.08rem 0.3rem;
+}
+
+.paper-content pre {
+  overflow-x: auto;
+  border: 1px solid rgba(18, 32, 42, 0.14);
+  background: #fdfaf2;
+  border-radius: 10px;
+  padding: 0.8rem;
+}
+
+.paper-content details {
+  margin: 1rem 0;
+  border: 1px solid rgba(18, 32, 42, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 0.6rem 0.8rem;
+}
+
+.paper-content details > summary {
+  cursor: pointer;
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-weight: 600;
+}
+
+.paper-content details[open] > summary {
+  margin-bottom: 0.5rem;
+}
+
+.citation {
+  margin-top: 1.8rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(18, 32, 42, 0.25);
+  color: var(--ink-soft);
+}
+
+.site-footer {
+  padding: 1rem 0 1.9rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.empty-state pre {
+  overflow-x: auto;
+  background: #f4efe1;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.7rem;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    font-size: 18px;
+  }
+
+  .header-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-nav {
+    gap: 0.8rem;
+  }
+
+  .site-tagline {
+    font-size: 0.92rem;
+  }
+
+  .content-wrapper {
+    padding-top: 1.4rem;
+  }
+
+}
+
+.post-kind-badge {
+  display: inline-block;
+  padding: 0.15rem 0.52rem;
+  border-radius: 999px;
+  border: 1px solid rgba(18, 32, 42, 0.24);
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.post-kind-research {
+  color: #684112;
+  background: rgba(217, 137, 67, 0.18);
+  border-color: rgba(138, 79, 29, 0.35);
+}
+
+.post-kind-blog {
+  color: #1f5058;
+  background: rgba(83, 164, 173, 0.2);
+  border-color: rgba(35, 108, 117, 0.35);
+}

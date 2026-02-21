@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    {%- feed_meta -%}
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container header-grid">
+          <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+          <p class="site-tagline">{{ site.tagline | default: site.description }}</p>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="{{ '/' | relative_url }}">Posts</a>
+            <a href="{{ '/about/' | relative_url }}">About</a>
+            <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="container content-wrapper">
+        {{ content }}
+      </main>
+
+      <footer class="site-footer container">
+        <p>
+          © {{ 'now' | date: '%Y' }} {{ site.author | default: site.title }}.
+          Built with Jekyll and deployed on GitHub Pages.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

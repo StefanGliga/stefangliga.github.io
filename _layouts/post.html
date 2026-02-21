@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<article class="paper" itemscope itemtype="https://schema.org/ScholarlyArticle">
+  <header class="paper-header">
+    <p class="eyebrow">Research</p>
+    <h1 itemprop="headline">{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="lede">{{ page.subtitle }}</p>
+    {% endif %}
+
+    <div class="paper-meta">
+      {% if page.authors %}
+        <p><strong>Authors:</strong> {{ page.authors | array_to_sentence_string }}</p>
+      {% endif %}
+      {% if page.affiliations %}
+        <p><strong>Affiliations:</strong> {{ page.affiliations | array_to_sentence_string }}</p>
+      {% endif %}
+      <p>
+        <strong>Published:</strong> <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {% if page.reading_time %}
+          <span> · <strong>Reading time:</strong> {{ page.reading_time }} min</span>
+        {% endif %}
+      </p>
+      {% if page.keywords %}
+        <p><strong>Keywords:</strong> {{ page.keywords | join: ", " }}</p>
+      {% endif %}
+    </div>
+
+    {% if page.abstract %}
+      <section class="abstract" aria-labelledby="abstract-heading">
+        <h2 id="abstract-heading">Abstract</h2>
+        <p itemprop="abstract">{{ page.abstract }}</p>
+      </section>
+    {% endif %}
+  </header>
+
+  <div class="paper-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {% if page.citation %}
+    <aside class="citation" aria-label="Suggested citation">
+      <h2>Suggested Citation</h2>
+      <p>{{ page.citation }}</p>
+    </aside>
+  {% endif %}
+</article>
