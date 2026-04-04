@@ -22,4 +22,21 @@ layout: default
   <div class="paper-content" itemprop="articleBody">
     {{ content }}
   </div>
+
+  {% if page.references %}
+    <section class="references" aria-label="References">
+      <h2>References</h2>
+      <ol>
+        {% for ref in page.references %}
+          <li id="ref-{{ ref.id }}">
+            {% if ref.url %}
+              <a href="{{ ref.url }}">{{ ref.text }}</a>
+            {% else %}
+              {{ ref.text }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </section>
+  {% endif %}
 </article>

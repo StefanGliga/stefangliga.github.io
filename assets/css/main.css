@@ -38,7 +38,7 @@ body {
 }
 
 .container {
-  width: min(1080px, 92vw);
+  width: min(1240px, 94vw);
   margin: 0 auto;
 }
 
@@ -256,14 +256,66 @@ body {
 .paper-content ul,
 .paper-content ol,
 .paper-content blockquote {
-  max-width: 78ch;
+  max-width: none;
 }
 
-.page-content .paper-content p,
-.page-content .paper-content ul,
-.page-content .paper-content ol,
-.page-content .paper-content blockquote {
-  max-width: none;
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin: 1.4rem 0;
+}
+
+.image-tile {
+  margin: 0;
+}
+
+.image-tile p {
+  margin: 0;
+}
+
+.image-tile p:first-child {
+  margin-bottom: 0.45rem;
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.paper-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 10px;
+  border: 1px solid rgba(18, 32, 42, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.brief-callout {
+  margin-top: 1rem;
+  border: 1px solid rgba(18, 32, 42, 0.2);
+  border-radius: 10px;
+  background: rgba(35, 108, 117, 0.08);
+  padding: 0.55rem 0.8rem;
+}
+
+.brief-callout > summary {
+  cursor: pointer;
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-weight: 700;
+}
+
+.brief-callout[open] > summary {
+  margin-bottom: 0.45rem;
+}
+
+.brief-content > :first-child {
+  margin-top: 0;
+}
+
+.brief-content > :last-child {
+  margin-bottom: 0;
 }
 
 .paper-content blockquote {
@@ -289,6 +341,89 @@ body {
   padding: 0.8rem;
 }
 
+.paper-content pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.highlight {
+  margin: 0.9rem 0;
+  border: 1px solid rgba(18, 32, 42, 0.14);
+  border-radius: 10px;
+  background: #fcf8ee;
+  overflow-x: auto;
+}
+
+.highlight pre {
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
+
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs {
+  color: #6d7f8d;
+  font-style: italic;
+}
+
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr {
+  color: #87502f;
+  font-weight: 700;
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .se {
+  color: #1d6f5a;
+}
+
+.highlight .m,
+.highlight .mi,
+.highlight .mf,
+.highlight .mh {
+  color: #2b6cb0;
+}
+
+.highlight .na,
+.highlight .nf,
+.highlight .nc {
+  color: #1f4f73;
+}
+
+.highlight .o,
+.highlight .p {
+  color: #425766;
+}
+
+.inline-cite a {
+  text-decoration: none;
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-size: 0.78em;
+  color: #1f4f73;
+}
+
+.references {
+  margin-top: 1.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(18, 32, 42, 0.15);
+}
+
+.references ol {
+  margin: 0.65rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.references li {
+  margin: 0.35rem 0;
+}
+
 .paper-content details {
   margin: 1rem 0;
   border: 1px solid rgba(18, 32, 42, 0.2);
@@ -305,6 +440,32 @@ body {
 
 .paper-content details[open] > summary {
   margin-bottom: 0.5rem;
+}
+
+.paper-content details.article-dropdown {
+  border: 1px solid rgba(18, 32, 42, 0.2);
+  border-radius: 10px;
+  background: rgba(35, 108, 117, 0.08);
+  padding: 0.55rem 0.8rem;
+}
+
+.paper-content details.article-dropdown > summary {
+  cursor: pointer;
+  font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+  font-weight: 700;
+}
+
+.paper-content details.article-dropdown > summary::marker {
+  color: #1f5058;
+  font-size: 1.15em;
+}
+
+.paper-content details.article-dropdown[open] > summary {
+  margin-bottom: 0.45rem;
+}
+
+.paper-content details.article-dropdown > *:last-child {
+  margin-bottom: 0;
 }
 
 .citation {
@@ -359,6 +520,10 @@ body {
 
   .content-wrapper {
     padding-top: 1.4rem;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
   }
 
 }

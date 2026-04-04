@@ -1,0 +1,11 @@
+{%- assign target_id = include.id | default: include.key -%}
+{%- assign cite_num = "" -%}
+{%- if page.references and target_id -%}
+  {%- for ref in page.references -%}
+    {%- if ref.id == target_id -%}
+      {%- assign cite_num = forloop.index -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+<sup class="inline-cite"><a href="#ref-{{ target_id }}">[{% if cite_num != "" %}{{ cite_num }}{% else %}?{% endif %}]</a></sup>

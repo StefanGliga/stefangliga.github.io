@@ -33,11 +33,38 @@ layout: default
         <p itemprop="abstract">{{ page.abstract }}</p>
       </section>
     {% endif %}
+
+    {% assign practitioner_brief = page.brief_for_practitioners | default: page.brief_for_practictioners %}
+    {% if practitioner_brief %}
+      <details class="brief-callout" aria-label="In Brief for Practitioners">
+        <summary>In Brief for Practitioners</summary>
+        <div class="brief-content">
+          {{ practitioner_brief | markdownify }}
+        </div>
+      </details>
+    {% endif %}
   </header>
 
   <div class="paper-content" itemprop="articleBody">
     {{ content }}
   </div>
+
+  {% if page.references %}
+    <section class="references" aria-label="References">
+      <h2>References</h2>
+      <ol>
+        {% for ref in page.references %}
+          <li id="ref-{{ ref.id }}">
+            {% if ref.url %}
+              <a href="{{ ref.url }}">{{ ref.text }}</a>
+            {% else %}
+              {{ ref.text }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </section>
+  {% endif %}
 
   {% if page.citation %}
     <aside class="citation" aria-label="Suggested citation">

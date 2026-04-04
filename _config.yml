@@ -5,6 +5,7 @@ description: >-
 tagline: For anything that doesn't fit in a tweet.
 baseurl: ""
 url: "https://stefangliga.github.io"
+timezone: Europe/Budapest
 author: Stefan Gligorijevic
 twitter_username: stefangliga
 github_username: stefangliga
@@ -15,8 +16,13 @@ hero_description: >-
   a mix of almost paper worthy posts and random throways.
 
 markdown: kramdown
+highlighter: rouge
 kramdown:
   input: GFM
+  parse_block_html: true
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "highlight"
 
 permalink: /:year/:month/:day/:title/
 
