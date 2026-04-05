@@ -53,7 +53,7 @@ Or put simply, we do not care about the exact values in $A$ or $B$, we only care
 
 ## Symmetry breaking
 
-As we have full freedom to pick whatever form of constrainsts we want, in the interest of being friendly towards the hardware, I propose to hardcode the top $r$ rows of the $A$ matrix to the identity matrix. I will call this IBA-LoRA, "Identity Block in A LoRA".
+As we have full freedom to pick whatever form of constraints we want, in the interest of being friendly towards the hardware, I propose to hardcode the top $r$ rows of the $A$ matrix to the identity matrix. I will call this IBA-LoRA, "Identity Block in A LoRA".
 
 Formally, define $A$ as:
 
